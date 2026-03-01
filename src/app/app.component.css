@@ -300,7 +300,19 @@
   font-size: 1rem;
   text-shadow: 0 0 5px #00ff00;
   opacity: 0.7;
-  animation: blink 2s steps(2, start) infinite;
+  animation: smoothPulse 2s ease-in-out infinite;
+}
+
+@keyframes smoothPulse {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.15;
+  }
 }
 
 /* COMMANDS WINDOW */
