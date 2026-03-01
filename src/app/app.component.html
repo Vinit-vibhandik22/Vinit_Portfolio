@@ -8,21 +8,23 @@
   </div>
 </div>
 } @else {
+<div class="crt-overlay"></div>
 <div class="intro-container">
   <div class="intro-text">
-    <h1>_Hello, World!_</h1>
+    <h1 class="glitch-hover" data-text="_Hello, World!_">_Hello, World!_</h1>
     <p>
       I’m Vinit_Vibhandik, and I am <span class="highlight">{{ currentText }}</span>
       <span class="cursor"></span>
     </p>
-    <p>
+    <p
+      appDecodeText="A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps and Cloud Engineer.">
       A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps and
       Cloud Engineer.
     </p>
   </div>
 
   <div class="intro-image">
-    <img src="./assets/img/profile-pic.jpg" alt="Profile Picture" width="500" height="500" />
+    <img class="glitch-image" src="./assets/img/profile-pic.jpg" alt="Profile Picture" width="500" height="500" />
   </div>
 </div>
 
@@ -55,7 +57,7 @@
 </div>
 
 @if(isTerminalOpen){
-<div class="terminal-container">
+<div class="terminal-container" [class.terminal-closing]="isTerminalClosing">
   <app-terminal (terminalClosed)="handleTerminalClosed()"></app-terminal>
 </div>
 }

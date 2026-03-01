@@ -74,9 +74,10 @@ export class TerminalComponent implements OnInit, OnDestroy {
 
   initializeCommands(): void {
     const directories: { [key: string]: string[] } = {
-      home: ['projects', 'contact'],
+      home: ['projects', 'contact', 'about'],
       projects: ['Project 1', 'Project 2', 'Project 3'],
       contact: ['Vinit_Vibhandik', 'vinitvibhandik77@gmail.com'],
+      about: ['education', 'experience', 'certifications']
     };
 
     let currentDirectory = 'home';
@@ -85,7 +86,7 @@ export class TerminalComponent implements OnInit, OnDestroy {
     this.terminal.writeln('Type "help" for a list of commands.');
 
     const updatePrompt = () => {
-      this.terminal.write(`\r\nC:\\Users\\Vinit_Vibhandik\\${currentDirectory}> `);
+      this.terminal.write(`\r\n\x1b[32mC:\\Users\\Vinit_Vibhandik\\${currentDirectory}>\x1b[0m `);
     };
 
     updatePrompt();
@@ -100,7 +101,7 @@ export class TerminalComponent implements OnInit, OnDestroy {
         this.terminal.write('\b \b');
       } else {
         this.inputBuffer += input;
-        this.terminal.write(input);
+        this.terminal.write(`\x1b[36m${input}\x1b[0m`);
       }
     });
   }
@@ -144,11 +145,27 @@ export class TerminalComponent implements OnInit, OnDestroy {
         else if (command.startsWith('cat ')) {
           const file = command.substring(4);
           if (file === 'Project 1' || file === 'Project 2' || file === 'Project 3') {
-            this.terminal.writeln(`\r\nOpening details for ${file}... (In a real app, this would fetch data from an API)`);
+            this.terminal.writeln(`\r\n\x1b[33mOpening details for ${file}... (In a real app, this would fetch data from an API)\x1b[0m`);
           } else if (file === 'Vinit_Vibhandik') {
-            this.terminal.writeln('\r\nFetching profile data...\r\nName: Vinit Vibhandik\r\nRole: Cloud & DevOps Engineer');
+            this.terminal.writeln('\r\n\x1b[36mFetching profile data...\r\nName: Vinit Vibhandik\r\nRole: Cloud & DevOps Engineer\x1b[0m');
+          } else if (file === 'education') {
+            this.terminal.writeln('\r\n\x1b[36m[EDUCATION]\x1b[0m');
+            this.terminal.writeln('🎓 \x1b[32mBTech Information Technology\x1b[0m - JSPM\'s Rajarshi Shahu College of Engineering (Sep 2025 - Sep 2029)');
+            this.terminal.writeln('🎓 \x1b[32m12th Science PCM (82.33%)\x1b[0m - Chhatrapati Shivaji junior science college (2025 - Present)');
+          } else if (file === 'experience') {
+            this.terminal.writeln('\r\n\x1b[36m[EXPERIENCE]\x1b[0m');
+            this.terminal.writeln('💼 \x1b[32mCampus Ambassador\x1b[0m @ Naukri.com (Jan 2026 - Present)');
+            this.terminal.writeln('💼 \x1b[32mTechnical Team Member\x1b[0m @ RSCOE Mathematics Club (Oct 2025 - Present)');
+          } else if (file === 'certifications') {
+            this.terminal.writeln('\r\n\x1b[36m[CERTIFICATIONS]\x1b[0m');
+            this.terminal.writeln('📜 \x1b[33mOracle Data Platform 2025 Certified Foundations Associate\x1b[0m');
+            this.terminal.writeln('📜 \x1b[33mOracle Cloud Infrastructure 2025 Certified Generative AI Professional\x1b[0m');
+            this.terminal.writeln('📜 \x1b[33mOracle AI Vector Search Certified Professional\x1b[0m');
+            this.terminal.writeln('📜 \x1b[33mOracle Cloud Infrastructure 2025 Certified AI Foundations Associate\x1b[0m');
+            this.terminal.writeln('📜 \x1b[33mJPMorgan Chase & Co. Software Engineering Job Simulation\x1b[0m');
+            this.terminal.writeln('📜 \x1b[33mOracle Cloud Infrastructure 2025 Certified Data Science Professional\x1b[0m');
           } else {
-            this.terminal.writeln(`\r\ncat: ${file}: No such file or directory`);
+            this.terminal.writeln(`\r\n\x1b[31mcat: ${file}: No such file or directory\x1b[0m`);
           }
         }
         else if (command.startsWith('cd ')) {
@@ -169,16 +186,16 @@ export class TerminalComponent implements OnInit, OnDestroy {
               this.terminal.writeln(`\r\nChanged directory to ${targetDir}`);
             }
           } else {
-            this.terminal.writeln(`\r\nDirectory "${targetDir}" not found.`);
+            this.terminal.writeln(`\r\n\x1b[31mDirectory "${targetDir}" not found.\x1b[0m`);
           }
         } else {
-          this.terminal.writeln(`\r\n'${command}' is not recognized as an internal or external command.`);
+          this.terminal.writeln(`\r\n\x1b[31m'${command}' is not recognized as an internal or external command.\x1b[0m`);
         }
         break;
     }
 
     const updatePrompt = () => {
-      this.terminal.write(`\r\nC:\\Users\\Vinit_Vibhandik\\${currentDirectory}> `);
+      this.terminal.write(`\r\n\x1b[32mC:\\Users\\Vinit_Vibhandik\\${currentDirectory}>\x1b[0m `);
     };
 
     updatePrompt();

@@ -3,6 +3,7 @@ import { initializeMatrixEffect } from './matrix/matrix-effect';
 import { NgOptimizedImage } from '@angular/common';
 import { TerminalComponent } from './terminal/terminal.component';
 import { NeonLettersDirective } from './neon-letters.directive';
+import { DecodeTextDirective } from './decode-text.directive';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { NeonLettersDirective } from './neon-letters.directive';
   imports: [
     NgOptimizedImage,
     TerminalComponent,
-    NeonLettersDirective
+    NeonLettersDirective,
+    DecodeTextDirective
   ],
   styleUrl: './app.component.css'
 })
@@ -30,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
   typingSpeed = 150;
   pauseDuration = 2000;
   isTerminalOpen = false;
+  isTerminalClosing = false;
 
   ngOnInit(): void {
     initializeMatrixEffect();
@@ -81,7 +84,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   handleTerminalClosed() {
-    this.isTerminalOpen = false;
+    this.isTerminalClosing = true;
+    setTimeout(() => {
+      this.isTerminalOpen = false;
+      this.isTerminalClosing = false;
+    }, 400); // Wait for the CRT shut off animation
   }
 
   startTypingEffect() {

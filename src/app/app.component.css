@@ -213,3 +213,123 @@
   transform: scale(1.2);
   color: #00ffaa;
 }
+
+/* CRT Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10000;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  animation: crtFlicker 0.15s infinite;
+}
+
+@keyframes crtFlicker {
+  0% {
+    opacity: 0.95;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.98;
+  }
+}
+
+/* Glitch Effect */
+.glitch-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-hover:hover {
+  animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #fff;
+  text-shadow: 2px 0 red, -2px 0 cyan;
+}
+
+.glitch-image:hover {
+  animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  filter: drop-shadow(4px 0px 0px rgba(255, 0, 0, 0.8)) drop-shadow(-4px 0px 0px rgba(0, 255, 255, 0.8));
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+
+  20% {
+    transform: skew(-10deg);
+  }
+
+  40% {
+    transform: skew(10deg);
+  }
+
+  60% {
+    transform: skew(-5deg);
+  }
+
+  80% {
+    transform: skew(5deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/* Terminal Animations */
+.terminal-container {
+  animation: crtTurnOn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.terminal-closing {
+  animation: crtTurnOff 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes crtTurnOn {
+  0% {
+    transform: scale(1, 0.001) translate3d(0, 0, 0);
+    filter: brightness(3);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1, 0.001) translate3d(0, 0, 0);
+    filter: brightness(3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+
+@keyframes crtTurnOff {
+  0% {
+    transform: scale(1, 1);
+    filter: brightness(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1, 0.001);
+    filter: brightness(3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0, 0.001);
+    filter: brightness(5);
+    opacity: 0;
+  }
+}
