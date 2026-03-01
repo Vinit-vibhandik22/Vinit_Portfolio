@@ -46,19 +46,6 @@ export class AppComponent implements OnInit, OnDestroy {
   contactSending = false;
   contactSent = false;
 
-  // Skills for progress bars
-  skills = [
-    { name: 'Python', level: 80 },
-    { name: 'C++', level: 70 },
-    { name: 'Oracle Cloud (OCI)', level: 75 },
-    { name: 'Docker & DevOps', level: 60 },
-    { name: 'Angular / TypeScript', level: 65 },
-    { name: 'Machine Learning / AI', level: 55 },
-    { name: 'Data Analysis', level: 65 },
-    { name: 'Git & Version Control', level: 80 },
-  ];
-  skillsVisible = false;
-
   // System status
   cpuUsage = 0;
   ramUsage = 0;
@@ -105,22 +92,6 @@ export class AppComponent implements OnInit, OnDestroy {
     initializeMatrixEffect();
     this.startOpeningSequence();
     this.startSystemStatus();
-
-    // Observe skills section
-    setTimeout(() => {
-      const skillsEl = document.querySelector('.skills-section');
-      if (skillsEl) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.skillsVisible = true;
-              observer.disconnect();
-            }
-          });
-        }, { threshold: 0.3 });
-        observer.observe(skillsEl);
-      }
-    }, 2000);
   }
 
   startSystemStatus() {

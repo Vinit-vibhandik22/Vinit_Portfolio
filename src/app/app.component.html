@@ -81,19 +81,49 @@
   <!-- Skills Section -->
   <div class="skills-section">
     <h2 class="section-title">[ SYSTEM_CAPABILITIES ]</h2>
-    <div class="skills-grid">
-      @for (skill of skills; track skill.name) {
-      <div class="skill-item">
-        <div class="skill-header">
-          <span class="skill-name">{{ skill.name }}</span>
-          <span class="skill-percent">{{ skill.level }}%</span>
-        </div>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" [style.width.%]="skillsVisible ? skill.level : 0"></div>
-        </div>
+    <div class="skills-icons">
+      <div class="skill-icon-item">
+        <i class="devicon-python-plain"></i>
+        <span>Python</span>
       </div>
-      }
+      <div class="skill-icon-item">
+        <i class="devicon-c-plain"></i>
+        <span>C</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-cplusplus-plain"></i>
+        <span>C++</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-html5-plain"></i>
+        <span>HTML</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-css3-plain"></i>
+        <span>CSS</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-javascript-plain"></i>
+        <span>JavaScript</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="bx bx-bot"></i>
+        <span>ClawdBot</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-git-plain"></i>
+        <span>Git</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-github-original"></i>
+        <span>GitHub</span>
+      </div>
+      <div class="skill-icon-item">
+        <i class="devicon-oracle-original"></i>
+        <span>OCI</span>
+      </div>
     </div>
+    <p class="more-to-learn">> more to be learnt...............</p>
   </div>
 
 </div>
