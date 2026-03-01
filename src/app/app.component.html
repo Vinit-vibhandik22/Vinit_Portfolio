@@ -1,0 +1,60 @@
+@if (showOpeningSequence) {
+<div class="opening-sequence-container">
+  <div class="opening-sequence-text">
+    <div>> {{ openingText }}@if (!showIpLine) {<span class="cursor"></span>}</div>
+    @if (showIpLine) {
+    <div>> {{ ipText }}<span class="cursor"></span></div>
+    }
+  </div>
+</div>
+} @else {
+<div class="intro-container">
+  <div class="intro-text">
+    <h1>_Hello, World!_</h1>
+    <p>
+      I’m Vinit_Vibhandik, and I am <span class="highlight">{{ currentText }}</span>
+      <span class="cursor"></span>
+    </p>
+    <p>
+      A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps and
+      Cloud Engineer.
+    </p>
+  </div>
+
+  <div class="intro-image">
+    <img src="./assets/img/profile-pic.jpg" alt="Profile Picture" width="500" height="500" />
+  </div>
+</div>
+
+<div class="socials">
+  <a href="https://github.com/Vinit-vibhandik22" target="_blank" aria-label="GitHub">
+    <i class="bx bxl-github"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/vinit-vibhandik-65a221365" target="_blank" aria-label="LinkedIn">
+    <i class="bx bxl-linkedin"></i>
+  </a>
+</div>
+
+
+@if (!isTerminalOpen) {
+<div class="commands-window" appNeonLetters>
+  <p class="commands-title">Available Commands:</p>
+  <ul>
+    <li><code>help</code> - list commands</li>
+    <li><code>ls</code> - list directory</li>
+    <li><code>cd [dir]</code> - change directory</li>
+    <li><code>clear</code> - clear terminal</li>
+  </ul>
+</div>
+}
+
+<div class="terminal-icon" (click)="toggleTerminal()">
+  <i class="bx bx-terminal"></i>
+</div>
+
+@if(isTerminalOpen){
+<div class="terminal-container">
+  <app-terminal (terminalClosed)="handleTerminalClosed()"></app-terminal>
+</div>
+}
+}
