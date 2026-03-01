@@ -113,9 +113,54 @@
 </div>
 }
 
-<div class="terminal-icon" (click)="toggleTerminal()">
-  <i class="bx bx-terminal"></i>
+<div class="bottom-icons">
+  <div class="contact-icon" (click)="toggleContactForm()">
+    <i class="bx bx-envelope"></i>
+  </div>
+  <div class="whatsapp-icon" (click)="openWhatsApp()">
+    <i class="bx bxl-whatsapp"></i>
+  </div>
+  <div class="terminal-icon" (click)="toggleTerminal()">
+    <i class="bx bx-terminal"></i>
+  </div>
 </div>
+
+<!-- Contact Form Modal -->
+@if (showContactForm) {
+<div class="contact-overlay" (click)="toggleContactForm()">
+  <div class="contact-modal" (click)="$event.stopPropagation()">
+    <div class="contact-header">
+      <span>> Contact_Me</span>
+      <span class="contact-close" (click)="toggleContactForm()">✕</span>
+    </div>
+    @if (!contactSent) {
+    <div class="contact-body">
+      <div class="contact-field">
+        <label>> Name:</label>
+        <input type="text" [(ngModel)]="contactName" placeholder="Enter your name" />
+      </div>
+      <div class="contact-field">
+        <label>> Phone:</label>
+        <input type="tel" [(ngModel)]="contactPhone" placeholder="Enter phone number" />
+      </div>
+      <div class="contact-field">
+        <label>> Message:</label>
+        <textarea [(ngModel)]="contactMessage" placeholder="Type your message..." rows="4"></textarea>
+      </div>
+      <button class="contact-send" (click)="sendContactForm()" [disabled]="contactSending">
+        {{ contactSending ? 'Transmitting...' : '[ SEND ]' }}
+      </button>
+    </div>
+    } @else {
+    <div class="contact-body contact-success">
+      <p>> Message transmitted successfully.</p>
+      <p>> Vinit will respond shortly.</p>
+      <p class="blink-text">> CONNECTION ESTABLISHED_</p>
+    </div>
+    }
+  </div>
+</div>
+}
 
 @if(isTerminalOpen){
 <div class="terminal-container" [class.terminal-closing]="isTerminalClosing">

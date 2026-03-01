@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { initializeMatrixEffect } from './matrix/matrix-effect';
 import { NgOptimizedImage } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TerminalComponent } from './terminal/terminal.component';
 import { NeonLettersDirective } from './neon-letters.directive';
 import { DecodeTextDirective } from './decode-text.directive';
@@ -14,7 +15,8 @@ import { playTypingClick, toggleAmbientDrone, isAmbientPlaying } from './audio/a
     NgOptimizedImage,
     TerminalComponent,
     NeonLettersDirective,
-    DecodeTextDirective
+    DecodeTextDirective,
+    FormsModule
   ],
   styleUrl: './app.component.css'
 })
@@ -36,6 +38,14 @@ export class AppComponent implements OnInit, OnDestroy {
   isTerminalOpen = false;
   isTerminalClosing = false;
 
+  // Contact form
+  showContactForm = false;
+  contactName = '';
+  contactPhone = '';
+  contactMessage = '';
+  contactSending = false;
+  contactSent = false;
+
   // Skills for progress bars
   skills = [
     { name: 'Python', level: 80 },
@@ -55,6 +65,41 @@ export class AppComponent implements OnInit, OnDestroy {
   networkPing = 0;
   threatLevel = 'LOW';
   private statusInterval: any;
+
+  toggleContactForm() {
+    this.showContactForm = !this.showContactForm;
+    this.contactSent = false;
+  }
+
+  openWhatsApp() {
+    window.open('https://wa.me/919226654133', '_blank');
+  }
+
+  sendContactForm() {
+    if (!this.contactName || !this.contactPhone || !this.contactMessage) return;
+    this.contactSending = true;
+    const formData = new FormData();
+    formData.append('name', this.contactName);
+    formData.append('phone', this.contactPhone);
+    formData.append('message', this.contactMessage);
+
+    fetch('https://formsubmit.co/ajax/vinitvibhandik77@gmail.com', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(() => {
+        this.contactSending = false;
+        this.contactSent = true;
+        this.contactName = '';
+        this.contactPhone = '';
+        this.contactMessage = '';
+      })
+      .catch(() => {
+        this.contactSending = false;
+        alert('Failed to send message. Please try again.');
+      });
+  }
 
   ngOnInit(): void {
     initializeMatrixEffect();
