@@ -286,12 +286,14 @@
 }
 
 /* Terminal Animations */
-.terminal-container {
+::ng-deep .terminal-container:not(.terminal-closing) .terminal-wrapper {
   animation: crtTurnOn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform-origin: center center;
 }
 
-.terminal-closing {
+::ng-deep .terminal-closing .terminal-wrapper {
   animation: crtTurnOff 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform-origin: center center;
 }
 
 @keyframes crtTurnOn {
