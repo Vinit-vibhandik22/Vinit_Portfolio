@@ -130,8 +130,26 @@ export class TerminalComponent implements OnInit, OnDestroy {
         this.terminalClosed.emit();
         break;
 
+      case 'whoami':
+        this.terminal.writeln('\r\nVinit Vibhandik - Aspiring DevOps and Cloud Engineer');
+        this.terminal.writeln('Passionate about competitive coding and backend development.');
+        break;
+
       default:
-        if (command.startsWith('cd ')) {
+        if (command.startsWith('echo ')) {
+          this.terminal.writeln(`\r\n${command.substring(5)}`);
+        }
+        else if (command.startsWith('cat ')) {
+          const file = command.substring(4);
+          if (file === 'Project 1' || file === 'Project 2' || file === 'Project 3') {
+            this.terminal.writeln(`\r\nOpening details for ${file}... (In a real app, this would fetch data from an API)`);
+          } else if (file === 'Vinit_Vibhandik') {
+            this.terminal.writeln('\r\nFetching profile data...\r\nName: Vinit Vibhandik\r\nRole: Cloud & DevOps Engineer');
+          } else {
+            this.terminal.writeln(`\r\ncat: ${file}: No such file or directory`);
+          }
+        }
+        else if (command.startsWith('cd ')) {
           const targetDir = command.split(' ')[1];
           if (directories[targetDir]) {
             currentDirectory = targetDir;
