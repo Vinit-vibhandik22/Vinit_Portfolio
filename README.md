@@ -1,35 +1,41 @@
-# Hacker-Themed Portfolio Terminal
+# Vinit's Hacker-Themed Portfolio
 
-This is a hacker-themed portfolio website with an interactive terminal interface. Visitors can explore different sections of the portfolio (e.g., projects, contact information) using terminal commands. The application is built using **Angular** and styled for a unique, hacker-like experience.
+This is a hacker-themed portfolio website with an interactive terminal interface, built specifically for Vinit Vibhandik. Visitors can explore different sections of the portfolio (e.g., projects, contact information) using terminal commands. The application is built using **Angular** and stylized with highly customized animations for a unique, cinematic hacker experience.
 
-## Features
+## ✨ New Features & Customizations
 
-- **Interactive Terminal Interface**: A terminal-like UI built with `xterm.js`.
-- **Command-based Navigation**: Users can type commands like `help`, `ls`, and `cd` to navigate through the portfolio.
-- **Draggable Terminal Window**: The terminal can be dragged across the screen for a personalized experience.
-- **Custom Commands**:
-  - `help`: Displays a list of available commands.
-  - `ls`: Lists files/directories in the current directory.
-  - `cd <directory>`: Changes the directory (e.g., to `projects` or `contact`).
-  - `clear`: Clears the terminal screen.
-  - `exit`: Closes the terminal.
-- **Dynamic Links**:
-  - Navigate to GitHub projects.
-  - Open email client for contact.
+- **Cinematic Boot Sequence**: The site launches with an animated "All Systems Online" sequence that establishes a dynamically generated IP address before revealing the portfolio.
+- **Neon Command Overlay**: A dynamically glowing, multi-colored (green, red, blue, pink) neon cheat sheet that slowly flickers on the screen so users instantly know how to use the terminal.
+- **Enhanced Matrix Rain Effect**: The classic green raining code background has been upgraded to include randomized red and blue letters raining down alongside the green.
+- **Multi-Role Typewriter**: Automatically cycles through roles like "a backend developer", "a frontend developer", "practicing competitive coding", and "learning Cloud and DevOps".
+- **Vercel Ready**: Out-of-the-box support for root domain hosting via Vercel using the configured `vercel.json`.
 
-## Tech Stack
+## 💻 Interactive Terminal
+
+The site features a draggable, fully functional command-line interface built with `xterm.js`. 
+
+### Available Commands:
+- `help`: View available commands.
+- `ls`: List contents of the current directory.
+- `cd <directory>`: Navigate to a specific directory (e.g., `projects`, `contact`).
+  - `cd contact` automatically opens your native email client to email Vinit.
+  - `cd projects` automatically opens Vinit's GitHub page.
+- `clear`: Clear the terminal screen.
+- `exit`: Close the terminal.
+
+## 🛠️ Tech Stack
 
 - **Frontend**: Angular
-- **Styling**: CSS
-- **Terminal Library**: xterm.js
-- **Hosting**: GitHub Pages
+- **Styling**: Pure CSS (Custom Keyframes & Animations)
+- **Terminal Engine**: xterm.js
+- **Hosting**: Vercel (Configured via `vercel.json`)
 
-## Installation
+## 🚀 Installation & Local Server
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/OumaimaZerouali/hacker-themed-portfolio.git
-   cd hacker-themed-portfolio
+   git clone https://github.com/Vinit-vibhandik22/Vinit_Portfolio.git
+   cd Vinit_Portfolio
    ```
 
 2. Install dependencies:
@@ -39,7 +45,7 @@ This is a hacker-themed portfolio website with an interactive terminal interface
 
 3. Run the application locally:
    ```bash
-   ng serve
+   npm run start
    ```
 
 4. Open your browser and navigate to:
@@ -47,47 +53,14 @@ This is a hacker-themed portfolio website with an interactive terminal interface
    http://localhost:4200
    ```
 
-## Deployment
+## 🌍 Deployment (Vercel)
 
-This project is hosted on GitHub Pages. To build and deploy:
+This project has been specifically optimized for deployment on Vercel. 
 
-1. Build the application:
-   ```bash
-   ng build --configuration=production --output-path=dist/personalpage --base-href=/hacker-themed-portfolio/
-   ```
+1. Ensure your code is pushed to your GitHub repository.
+2. Go to your [Vercel Dashboard](https://vercel.com/) and click **Add New Project**.
+3. Import the `Vinit_Portfolio` repository.
+4. Vercel will auto-detect the Angular framework. Leave the default build commands (`npm run build`) and output directory (`dist/personalpage`).
+5. Click **Deploy**.
 
-2. Deploy to GitHub Pages:
-   ```bash
-   npx angular-cli-ghpages --dir=dist/personalpage
-   ```
-
-## Usage
-
-### Commands
-
-- `help`: View available commands.
-- `ls`: List contents of the current directory.
-- `cd <directory>`: Navigate to a specific directory (e.g., `projects`, `contact`).
-- `clear`: Clear the terminal screen.
-- `exit`: Close the terminal.
-
-### Directory Structure
-
-- **home**: Contains `projects` and `contact` directories.
-- **projects**: Links to GitHub repositories.
-- **contact**: Displays contact information and opens the email client.
-
-## Known Issues
-
-- Ensure all assets from `xterm.js` are correctly included in the build process.
-- Compatibility with different browsers should be tested.
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the project.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-
+The `baseHref` in `angular.json` is set to `/` and the `vercel.json` file handles all SPA routing automatically, preventing any `404 Not Found` errors on refresh.
