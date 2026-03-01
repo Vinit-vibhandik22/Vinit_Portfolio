@@ -109,11 +109,16 @@ export class TerminalComponent implements OnInit, OnDestroy {
   executeCommand(command: string, directories: { [key: string]: string[] }, currentDirectory: string): void {
     switch (command) {
       case 'help':
-        this.terminal.writeln('\r\nList of commands:');
-        this.terminal.writeln('help - List available commands');
-        this.terminal.writeln('ls - List files/directories in the current directory');
-        this.terminal.writeln('cat <file> - Read the contents of a file');
-        this.terminal.writeln('whoami - Display current user info');
+        this.terminal.writeln('\r\n\x1b[36mList of commands:\x1b[0m');
+        this.terminal.writeln('  help              - List available commands');
+        this.terminal.writeln('  ls                - List files/directories');
+        this.terminal.writeln('  cat <file>        - Read the contents of a file');
+        this.terminal.writeln('  cd <dir>          - Change directory');
+        this.terminal.writeln('  whoami            - Display current user info');
+        this.terminal.writeln('  neofetch          - Display system information');
+        this.terminal.writeln('  download resume   - Download resume (PDF)');
+        this.terminal.writeln('  clear             - Clear terminal');
+        this.terminal.writeln('  exit              - Close terminal');
         break;
 
       case 'ls':
@@ -136,6 +141,38 @@ export class TerminalComponent implements OnInit, OnDestroy {
       case 'whoami':
         this.terminal.writeln('\r\nVinit Vibhandik - Aspiring DevOps and Cloud Engineer');
         this.terminal.writeln('Passionate about competitive coding and backend development.');
+        break;
+
+      case 'neofetch':
+        this.terminal.writeln('\r\n\x1b[32m __      __ __      __\x1b[0m');
+        this.terminal.writeln('\x1b[32m \\ \\    / / \\ \\    / /\x1b[0m');
+        this.terminal.writeln('\x1b[32m  \\ \\  / /   \\ \\  / / \x1b[0m');
+        this.terminal.writeln('\x1b[32m   \\ \\/ /     \\ \\/ /  \x1b[0m');
+        this.terminal.writeln('\x1b[32m    \\  /       \\  /   \x1b[0m');
+        this.terminal.writeln('\x1b[32m     \\/         \\/    \x1b[0m');
+        this.terminal.writeln('');
+        this.terminal.writeln('\x1b[36m  vinit@portfolio\x1b[0m');
+        this.terminal.writeln('  ─────────────────');
+        this.terminal.writeln('  \x1b[33mOS:\x1b[0m      Portfolio v2.0');
+        this.terminal.writeln('  \x1b[33mHost:\x1b[0m    Vercel Cloud');
+        this.terminal.writeln('  \x1b[33mShell:\x1b[0m   Angular 17 / TypeScript');
+        this.terminal.writeln('  \x1b[33mTheme:\x1b[0m   Matrix Neon [Dark]');
+        this.terminal.writeln('  \x1b[33mSkills:\x1b[0m  Python, C++, OCI, Docker');
+        this.terminal.writeln('  \x1b[33mCerts:\x1b[0m   6x Oracle Certified');
+        this.terminal.writeln('  \x1b[33mCollege:\x1b[0m JSPM RSCOE - BTech IT');
+        this.terminal.writeln('  \x1b[33mUptime:\x1b[0m  Since Jan 2026');
+        this.terminal.writeln('');
+        this.terminal.writeln('  \x1b[41m  \x1b[42m  \x1b[44m  \x1b[45m  \x1b[43m  \x1b[46m  \x1b[47m  \x1b[0m');
+        break;
+
+      case 'download resume':
+        this.terminal.writeln('\r\n\x1b[33mInitializing download...\x1b[0m');
+        this.terminal.writeln('\x1b[32mResume download started!\x1b[0m');
+        // Create a link to download. Update the href to your actual resume URL.
+        const link = document.createElement('a');
+        link.href = './assets/Vinit_Vibhandik_Resume.pdf';
+        link.download = 'Vinit_Vibhandik_Resume.pdf';
+        link.click();
         break;
 
       default:

@@ -20,11 +20,14 @@
 }
 
 /* INTRO */
+.scrollable-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
 .intro-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +37,9 @@
   border: 1px solid #00ff00;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+  margin: 15vh auto 0 auto;
+  max-width: 750px;
+  width: 90%;
 }
 
 .intro-text {
@@ -67,15 +73,10 @@
 
 /* SOCIALS */
 .socials {
-  position: absolute;
-
   display: flex;
   justify-content: center;
-
-  top: 70%;
-  left: 27%;
-
   gap: 10px;
+  margin-top: 20px;
 }
 
 .socials a {
@@ -92,6 +93,164 @@
 
 .socials a:focus {
   outline: 2px solid #00ff00;
+}
+
+/* AUDIO TOGGLE */
+.audio-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9000;
+  font-size: 1.8rem;
+  color: #00ff00;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00ff00;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.audio-toggle:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+  transform: scale(1.1);
+}
+
+/* SYSTEM STATUS PANEL */
+.system-status {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 8000;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+  font-size: 0.75rem;
+  min-width: 180px;
+  backdrop-filter: blur(4px);
+}
+
+.status-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.status-label {
+  width: 40px;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+
+.status-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: rgba(0, 255, 0, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.status-bar-fill {
+  height: 100%;
+  background: #00ff00;
+  border-radius: 3px;
+  transition: width 1s ease;
+  box-shadow: 0 0 4px #00ff00;
+}
+
+.status-value {
+  width: 40px;
+  text-align: right;
+  font-size: 0.7rem;
+}
+
+.threat-low {
+  color: #00ff00;
+}
+
+.threat-mod {
+  color: #ffaa00;
+  text-shadow: 0 0 5px #ffaa00;
+}
+
+/* SKILLS SECTION */
+.skills-section {
+  max-width: 750px;
+  width: 90%;
+  margin: 60px auto 0 auto;
+  padding: 30px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.section-title {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.skill-item {
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.skill-name {
+  font-weight: bold;
+}
+
+.skill-percent {
+  color: #00ffaa;
+}
+
+.skill-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 255, 0, 0.1);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00, #00ffaa);
+  border-radius: 5px;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 /* COMMANDS WINDOW */

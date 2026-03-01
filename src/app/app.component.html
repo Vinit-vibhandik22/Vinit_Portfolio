@@ -9,34 +9,94 @@
 </div>
 } @else {
 <div class="crt-overlay"></div>
-<div class="intro-container">
-  <div class="intro-text">
-    <h1 class="glitch-hover" data-text="_Hello, World!_">_Hello, World!_</h1>
-    <p>
-      I’m Vinit_Vibhandik, and I am <span class="highlight">{{ currentText }}</span>
-      <span class="cursor"></span>
-    </p>
-    <p
-      appDecodeText="A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps and Cloud Engineer.">
-      A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps and
-      Cloud Engineer.
-    </p>
-  </div>
 
-  <div class="intro-image">
-    <img src="./assets/img/profile-pic.jpg" alt="Profile Picture" width="500" height="500" />
+<!-- Audio Toggle -->
+<div class="audio-toggle" (click)="toggleAudio()">
+  <i class="bx" [class.bx-volume-mute]="!audioEnabled" [class.bxs-volume-full]="audioEnabled"></i>
+</div>
+
+<!-- System Status Panel -->
+<div class="system-status">
+  <div class="status-title">[ SYSTEM STATUS ]</div>
+  <div class="status-row">
+    <span class="status-label">CPU</span>
+    <div class="status-bar-bg">
+      <div class="status-bar-fill" [style.width.%]="cpuUsage"></div>
+    </div>
+    <span class="status-value">{{ cpuUsage }}%</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">RAM</span>
+    <div class="status-bar-bg">
+      <div class="status-bar-fill" [style.width.%]="(ramUsage / 4) * 100"></div>
+    </div>
+    <span class="status-value">{{ ramUsage }}GB</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">NET</span>
+    <div class="status-bar-bg">
+      <div class="status-bar-fill" [style.width.%]="networkPing * 2"></div>
+    </div>
+    <span class="status-value">{{ networkPing }}ms</span>
+  </div>
+  <div class="status-row threat">
+    <span class="status-label">THREAT</span>
+    <span class="status-value" [class.threat-low]="threatLevel === 'LOW'"
+      [class.threat-mod]="threatLevel === 'MODERATE'">{{ threatLevel }}</span>
   </div>
 </div>
 
-<div class="socials">
-  <a href="https://github.com/Vinit-vibhandik22" target="_blank" aria-label="GitHub">
-    <i class="bx bxl-github"></i>
-  </a>
-  <a href="https://www.linkedin.com/in/vinit-vibhandik-65a221365" target="_blank" aria-label="LinkedIn">
-    <i class="bx bxl-linkedin"></i>
-  </a>
-</div>
+<div class="scrollable-content">
 
+  <!-- Intro Section -->
+  <div class="intro-container">
+    <div class="intro-text">
+      <h1 class="glitch-hover" data-text="_Hello, World!_">_Hello, World!_</h1>
+      <p>
+        I'm Vinit_Vibhandik, and I am <span class="highlight">{{ currentText }}</span>
+        <span class="cursor"></span>
+      </p>
+      <p
+        appDecodeText="A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps and Cloud Engineer.">
+        A passionate and driven junior developer with a strong commitment to learning and innovation, aspiring DevOps
+        and
+        Cloud Engineer.
+      </p>
+    </div>
+
+    <div class="intro-image">
+      <img src="./assets/img/profile-pic.jpg" alt="Profile Picture" width="500" height="500" />
+    </div>
+  </div>
+
+  <div class="socials">
+    <a href="https://github.com/Vinit-vibhandik22" target="_blank" aria-label="GitHub">
+      <i class="bx bxl-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/vinit-vibhandik-65a221365" target="_blank" aria-label="LinkedIn">
+      <i class="bx bxl-linkedin"></i>
+    </a>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="skills-section">
+    <h2 class="section-title">[ SYSTEM_CAPABILITIES ]</h2>
+    <div class="skills-grid">
+      @for (skill of skills; track skill.name) {
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-percent">{{ skill.level }}%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" [style.width.%]="skillsVisible ? skill.level : 0"></div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+</div>
 
 @if (!isTerminalOpen) {
 <div class="commands-window" appNeonLetters>
@@ -46,6 +106,7 @@
     <li><code>ls</code> - list directory</li>
     <li><code>cd [dir]</code> - change directory</li>
     <li><code>cat [file]</code> - read file</li>
+    <li><code>neofetch</code> - system info</li>
     <li><code>whoami</code> - display user info</li>
     <li><code>clear</code> - clear terminal</li>
   </ul>
