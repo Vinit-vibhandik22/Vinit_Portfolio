@@ -111,6 +111,8 @@ export class TerminalComponent implements OnInit, OnDestroy {
         this.terminal.writeln('\r\nList of commands:');
         this.terminal.writeln('help - List available commands');
         this.terminal.writeln('ls - List files/directories in the current directory');
+        this.terminal.writeln('cat <file> - Read the contents of a file');
+        this.terminal.writeln('whoami - Display current user info');
         break;
 
       case 'ls':
