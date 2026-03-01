@@ -9,7 +9,7 @@
   font-family: 'Courier New', Courier, monospace;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
   border-radius: 5px;
-  z-index: 1000;
+  z-index: 6000;
   cursor: move;
   overflow: hidden;
 }

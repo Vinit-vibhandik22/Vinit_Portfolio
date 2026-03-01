@@ -366,6 +366,7 @@
   color: #00ff00;
   cursor: pointer;
   transition: transform 0.3s, color 0.3s;
+  z-index: 5000;
 }
 
 .terminal-icon:hover {
