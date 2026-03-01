@@ -259,7 +259,7 @@
 }
 
 .glitch-image:hover {
-  animation: glitchDistort 0.4s steps(1) infinite;
+  animation: glitchDistort 1.5s steps(1) infinite;
   filter: drop-shadow(3px 0px 0px rgba(255, 0, 0, 0.7)) drop-shadow(-3px 0px 0px rgba(0, 255, 255, 0.7));
 }
 
